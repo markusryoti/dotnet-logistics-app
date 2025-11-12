@@ -1,11 +1,16 @@
+using LogisticsApp.Infrastructure;
 using LogisticsApp.Modules.Inventory;
 using LogisticsApp.Modules.Orders;
 using LogisticsApp.Modules.Shipping;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<IInProcessBus, InProcessBus>();
+builder.Services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
+
 builder.Services.AddInventoryModule();
 builder.Services.AddOrdersModule();
+builder.Services.AddShippingModule();
 
 var app = builder.Build();
 

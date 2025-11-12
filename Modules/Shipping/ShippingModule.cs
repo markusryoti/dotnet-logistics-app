@@ -1,3 +1,5 @@
+using LogisticsApp.Shared;
+using LogisticsApp.Shared.Events;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogisticsApp.Modules.Shipping;
@@ -7,6 +9,7 @@ public static class ShippingModule
     public static IServiceCollection AddShippingModule(this IServiceCollection services)
     {
         services.AddDbContext<ShippingDb>(opt => opt.UseInMemoryDatabase("Inventory"));
+        services.AddScoped<IEventHandler<OrderPlaced>, OrderPlacedHandler>();
 
         return services;
     }
@@ -26,5 +29,14 @@ public static class ShippingModule
         });
 
         return group;
+    }
+}
+
+public class OrderPlacedHandler(ILogger<OrderPlacedHandler> log) : IEventHandler<OrderPlaced>
+{
+    public Task Handle(OrderPlaced @event, CancellationToken token)
+    {
+        log.LogInformation("Handling OrderPlaced event for OrderId: {OrderId}", @event.OrderId);
+        return Task.CompletedTask;
     }
 }
