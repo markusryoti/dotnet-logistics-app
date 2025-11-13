@@ -37,11 +37,9 @@ public class DomainEventsDispatcher(IInProcessBus bus, ILogger<DomainEventsDispa
         var entities = ctx.ChangeTracker.Entries<IHasDomainEvents>().Where(e => e.Entity.DomainEvents?.Any() == true).ToArray();
         var events = entities.SelectMany(e => e.Entity.DomainEvents!).ToList();
         foreach (var e in entities) e.Entity.ClearDomainEvents();
-        // foreach (var ev in events) await bus.PublishAsync(ev, token);
-
         foreach (var ev in events)
         {
-            await ((IInProcessBus)bus).PublishAsync((dynamic)ev, token);
+            await bus.PublishAsync((dynamic)ev, token);
         }
     }
 }

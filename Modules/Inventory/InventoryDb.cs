@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
+namespace LogisticsApp.Modules.Inventory;
+
 class InventoryDb : DbContext
 {
     public InventoryDb(DbContextOptions<InventoryDb> options)

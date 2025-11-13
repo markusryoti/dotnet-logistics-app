@@ -1,5 +1,5 @@
+using LogisticsApp.Modules.Orders.Events;
 using LogisticsApp.Shared;
-using LogisticsApp.Shared.Events;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogisticsApp.Modules.Shipping;
