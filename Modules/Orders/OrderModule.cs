@@ -1,5 +1,7 @@
 using LogisticsApp.Infrastructure;
 using LogisticsApp.Modules.Inventory.Api;
+using LogisticsApp.Modules.Orders.Domain;
+using LogisticsApp.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogisticsApp.Modules.Orders;
@@ -9,7 +11,11 @@ public static class OrdersModule
     public static IServiceCollection AddOrdersModule(this IServiceCollection services)
     {
         services.AddDbContext<OrderDb>(opt => opt.UseInMemoryDatabase("Orders"));
+
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
+        services.AddScoped<IDomainEventHandler<OrderCreated>, OrderCreatedHandler>();
+
+        services.AddScoped<IInProcessIntegrationEventBus, InProcessIntegrationEventBus>();
 
         services.AddScoped<IInventoryFacade, InventoryFacade>();
 

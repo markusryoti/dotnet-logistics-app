@@ -9,7 +9,7 @@ public static class ShippingModule
     public static IServiceCollection AddShippingModule(this IServiceCollection services)
     {
         services.AddDbContext<ShippingDb>(opt => opt.UseInMemoryDatabase("Inventory"));
-        services.AddScoped<IEventHandler<OrderPlaced>, OrderPlacedHandler>();
+        services.AddScoped<IEventHandlerIntegration<OrderPlaced>, OrderPlacedIntegrationHandler>();
 
         return services;
     }
@@ -32,11 +32,3 @@ public static class ShippingModule
     }
 }
 
-public class OrderPlacedHandler(ILogger<OrderPlacedHandler> log) : IEventHandler<OrderPlaced>
-{
-    public Task Handle(OrderPlaced @event, CancellationToken token)
-    {
-        log.LogInformation("Handling OrderPlaced event for OrderId: {OrderId}", @event.OrderId);
-        return Task.CompletedTask;
-    }
-}

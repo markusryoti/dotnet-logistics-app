@@ -2,7 +2,14 @@ namespace LogisticsApp.Shared;
 
 public interface IDomainEvent { }
 
-public interface IEventHandler<TEvent> where TEvent : IDomainEvent
+public interface IDomainEventHandler<TEvent> where TEvent : IDomainEvent
+{
+    Task Handle(TEvent @event, CancellationToken token);
+}
+
+public interface IIntegrationEvent { }
+
+public interface IEventHandlerIntegration<TEvent> where TEvent : IIntegrationEvent
 {
     Task Handle(TEvent @event, CancellationToken token);
 }

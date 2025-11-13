@@ -1,4 +1,4 @@
-using LogisticsApp.Modules.Orders.Events;
+using LogisticsApp.Modules.Orders.Domain;
 using LogisticsApp.Shared;
 
 namespace LogisticsApp.Modules.Orders;
@@ -14,7 +14,7 @@ public class Order : IHasDomainEvents
     public Order(string name)
     {
         Name = name;
-        AddDomainEvent(new OrderPlaced(Id, Guid.NewGuid(), 100.0m));
+        AddDomainEvent(new OrderCreated(Id, Guid.NewGuid(), 100.0m));
     }
 
     public void AddDomainEvent(IDomainEvent ev)

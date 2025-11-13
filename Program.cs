@@ -5,7 +5,8 @@ using LogisticsApp.Modules.Shipping;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IInProcessBus, InProcessBus>();
+builder.Services.AddSingleton<IInProcessDomainEventBus, DomainEventBus>();
+builder.Services.AddSingleton<IInProcessIntegrationEventBus, InProcessIntegrationEventBus>();
 builder.Services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
 
 builder.Services.AddInventoryModule();

@@ -5,19 +5,19 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using LogisticsApp.Shared;
 
-public interface IInProcessBus
+public interface IInProcessDomainEventBus
 {
     Task PublishAsync<TEvent>(TEvent @event, CancellationToken token = default) where TEvent : IDomainEvent;
 }
 
-public class InProcessBus(IServiceProvider sp, ILogger<InProcessBus> log) : IInProcessBus
+public class DomainEventBus(IServiceProvider sp, ILogger<DomainEventBus> log) : IInProcessDomainEventBus
 {
     public async Task PublishAsync<TEvent>(TEvent @event, CancellationToken token = default) where TEvent : IDomainEvent
     {
-        log.LogInformation("Publishing event {EventType}", typeof(TEvent).Name);
+        log.LogInformation("Publishing domain event {EventType}", typeof(TEvent).Name);
 
         using var scope = sp.CreateScope();
-        var handlers = scope.ServiceProvider.GetServices<IEventHandler<TEvent>>();
+        var handlers = scope.ServiceProvider.GetServices<IDomainEventHandler<TEvent>>();
         foreach (var h in handlers)
         {
             try { await h.Handle(@event, token); }
@@ -28,7 +28,7 @@ public class InProcessBus(IServiceProvider sp, ILogger<InProcessBus> log) : IInP
 
 public interface IDomainEventsDispatcher { Task DispatchEventsAsync(DbContext ctx, CancellationToken token = default); }
 
-public class DomainEventsDispatcher(IInProcessBus bus, ILogger<DomainEventsDispatcher> log) : IDomainEventsDispatcher
+public class DomainEventsDispatcher(IInProcessDomainEventBus bus, ILogger<DomainEventsDispatcher> log) : IDomainEventsDispatcher
 {
     public async Task DispatchEventsAsync(DbContext ctx, CancellationToken token = default)
     {
