@@ -1,4 +1,5 @@
 using LogisticsApp.Infrastructure;
+using LogisticsApp.Modules.Catalog;
 using LogisticsApp.Modules.Inventory;
 using LogisticsApp.Modules.Orders;
 using LogisticsApp.Modules.Shipping;
@@ -18,12 +19,14 @@ builder.Services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
 builder.Services.AddInventoryModule();
 builder.Services.AddOrdersModule();
 builder.Services.AddShippingModule();
+builder.Services.AddCatalogModule();
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }));
 
+app.MapGroup("/api/catalog").MapCatalogEndpoints();
 app.MapGroup("/api/inventory").MapInventoryEndpoints();
 app.MapGroup("/api/orders").MapOrdersEndpoints();
 app.MapGroup("/api/shipping").MapShippingEndpoints();

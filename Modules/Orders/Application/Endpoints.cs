@@ -1,27 +1,12 @@
 using LogisticsApp.Infrastructure;
 using LogisticsApp.Modules.Inventory.Api;
 using LogisticsApp.Modules.Orders.Domain;
-using LogisticsApp.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogisticsApp.Modules.Orders;
 
-public static class OrdersModule
+public static class Endpoints
 {
-    public static IServiceCollection AddOrdersModule(this IServiceCollection services)
-    {
-        services.AddDbContext<OrderDb>();
-
-        services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
-        services.AddScoped<IDomainEventHandler<OrderCreated>, OrderCreatedHandler>();
-
-        services.AddScoped<IInProcessIntegrationEventBus, InProcessIntegrationEventBus>();
-
-        services.AddScoped<IInventoryFacade, InventoryFacade>();
-
-        return services;
-    }
-
     public static RouteGroupBuilder MapOrdersEndpoints(this RouteGroupBuilder group)
     {
         group.MapGet("/", async (OrderDb db) =>
@@ -51,4 +36,3 @@ public static class OrdersModule
         return group;
     }
 }
-

@@ -1,3 +1,4 @@
+using LogisticsApp.Modules.Orders.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogisticsApp.Modules.Orders;
