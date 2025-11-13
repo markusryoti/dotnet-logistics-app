@@ -1,10 +1,9 @@
-public class InventoryItem
+class Shipment
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
     public string Name { get; private set; } = null!;
-    public int Quantity { get; private set; } = 0;
 
-    public InventoryItem(string name)
+    public Shipment(string name)
     {
         Name = name;
     }

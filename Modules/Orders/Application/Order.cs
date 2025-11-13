@@ -3,7 +3,7 @@ using LogisticsApp.Shared;
 
 namespace LogisticsApp.Modules.Orders;
 
-public class Order : IHasDomainEvents
+class Order : IHasDomainEvents
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
     public string Name { get; private set; } = null!;

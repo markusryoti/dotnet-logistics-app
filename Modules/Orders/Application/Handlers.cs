@@ -2,7 +2,7 @@ using LogisticsApp.Modules.Orders.Domain;
 using LogisticsApp.Modules.Orders.Events;
 using LogisticsApp.Shared;
 
-public class OrderCreatedHandler(ILogger<OrderCreatedHandler> logger, IInProcessIntegrationEventBus bus) : IDomainEventHandler<OrderCreated>
+class OrderCreatedHandler(ILogger<OrderCreatedHandler> logger, IInProcessIntegrationEventBus bus) : IDomainEventHandler<OrderCreated>
 {
     public async Task Handle(OrderCreated @event, CancellationToken token)
     {

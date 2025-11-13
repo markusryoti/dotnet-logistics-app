@@ -26,11 +26,11 @@ public class DomainEventBus(IServiceProvider sp, ILogger<DomainEventBus> log) : 
     }
 }
 
-public interface IDomainEventsDispatcher { Task DispatchEventsAsync(DbContext ctx, CancellationToken token = default); }
+public interface IDomainEventsDispatcher { Task DispatchDomainEventsAsync(DbContext ctx, CancellationToken token = default); }
 
 public class DomainEventsDispatcher(IInProcessDomainEventBus bus, ILogger<DomainEventsDispatcher> log) : IDomainEventsDispatcher
 {
-    public async Task DispatchEventsAsync(DbContext ctx, CancellationToken token = default)
+    public async Task DispatchDomainEventsAsync(DbContext ctx, CancellationToken token = default)
     {
         log.LogInformation("Dispatching domain events");
 

@@ -41,7 +41,9 @@ public static class OrdersModule
 
             db.Orders.Add(order);
             await db.SaveChangesAsync();
-            await dispatcher.DispatchEventsAsync(db);
+
+            await dispatcher.DispatchDomainEventsAsync(db);
+
             return Results.Created($"/api/orders/{order.Id}", order);
         });
 
