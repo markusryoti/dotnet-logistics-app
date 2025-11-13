@@ -10,7 +10,7 @@ public static class OrdersModule
 {
     public static IServiceCollection AddOrdersModule(this IServiceCollection services)
     {
-        services.AddDbContext<OrderDb>(opt => opt.UseInMemoryDatabase("Orders"));
+        services.AddDbContext<OrderDb>();
 
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
         services.AddScoped<IDomainEventHandler<OrderCreated>, OrderCreatedHandler>();
