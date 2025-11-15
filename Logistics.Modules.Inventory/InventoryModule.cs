@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logistics.Modules.Inventory;
 
@@ -10,7 +11,8 @@ public static class InventoryModule
 {
     public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration config)
     {
-        services.AddDbContext<InventoryDb>();
+        services.AddDbContext<InventoryDb>(opt => opt.UseInMemoryDatabase("Inventory"));
+        // services.AddDbContext<InventoryDb>();
         services.AddScoped<IInventoryFacade, InventoryFacade>();
 
         return services;

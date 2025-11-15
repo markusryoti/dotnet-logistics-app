@@ -19,7 +19,7 @@ public static class ShippingModule
 
     public static void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
-        var group = endpoints.MapGroup("/orders");
+        var group = endpoints.MapGroup("/shipping");
 
         Endpoints.MapShippingEndpoints(group);
     }
