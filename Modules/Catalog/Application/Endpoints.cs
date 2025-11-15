@@ -5,7 +5,7 @@ public static class Endpoints
 
     public static RouteGroupBuilder MapCatalogEndpoints(this RouteGroupBuilder group)
     {
-        group.MapGet("/", async () =>
+        group.MapGet("/", () =>
         {
 
             return Results.Ok(new
