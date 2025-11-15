@@ -1,7 +1,8 @@
 using Logistics.Contracts.Orders;
 using Logistics.Shared;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace LogisticsApp.Modules.Shipping;
+namespace Logistics.Modules.Shipping.Application;
 
 public static class ShippingModule
 {

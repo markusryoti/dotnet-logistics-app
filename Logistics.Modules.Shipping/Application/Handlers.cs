@@ -1,7 +1,8 @@
 using Logistics.Shared;
 using Logistics.Contracts.Orders;
+using Microsoft.Extensions.Logging;
 
-namespace LogisticsApp.Modules.Shipping;
+namespace Logistics.Modules.Shipping.Application;
 
 internal class OrderPlacedIntegrationHandler(ILogger<OrderPlacedIntegrationHandler> logger) : IEventHandlerIntegration<OrderPlaced>
 {

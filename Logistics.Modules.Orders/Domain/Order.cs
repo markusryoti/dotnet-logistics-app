@@ -1,7 +1,7 @@
 
 using Logistics.Shared;
 
-namespace LogisticsApp.Modules.Orders.Domain;
+namespace Logistics.Modules.Orders.Domain;
 
 class Order : IHasDomainEvents
 {

@@ -1,4 +1,8 @@
-namespace LogisticsApp.Modules.Shipping;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+
+namespace Logistics.Modules.Shipping.Application;
 
 public static class Endpoints
 {

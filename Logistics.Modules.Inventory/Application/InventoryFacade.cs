@@ -1,11 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LogisticsApp.Modules.Inventory.Api;
-
-interface IInventoryFacade
-{
-    Task<bool> IsInStockAsync(Guid productId, int quantity, CancellationToken token);
-}
+namespace Logistics.Modules.Inventory.Application;
 
 class InventoryFacade : IInventoryFacade
 {

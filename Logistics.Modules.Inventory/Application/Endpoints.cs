@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 
-namespace LogisticsApp.Modules.Inventory;
+namespace Logistics.Modules.Inventory.Application;
 
 public static class Endpoints
 {

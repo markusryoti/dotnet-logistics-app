@@ -1,4 +1,4 @@
-namespace LogisticsApp.Modules.Catalog.Domain;
+namespace Logistics.Modules.Catalog.Domain;
 
 class CatalogItem
 {

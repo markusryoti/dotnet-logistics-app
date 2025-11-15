@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace LogisticsApp.Modules.Orders.Migrations
+namespace Logistics.Modules.Orders.Migrations
 {
     /// <inheritdoc />
     public partial class InitialOrders : Migration

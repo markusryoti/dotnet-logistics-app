@@ -1,9 +1,12 @@
-using LogisticsApp.Infrastructure;
-using LogisticsApp.Modules.Inventory.Api;
-using LogisticsApp.Modules.Orders.Domain;
+using Logistics.Modules.Orders.Domain;
+using Logistics.Shared;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
-namespace LogisticsApp.Modules.Orders;
+namespace Logistics.Modules.Orders.Application;
 
 public static class Endpoints
 {

@@ -1,7 +1,7 @@
-using LogisticsApp.Modules.Orders.Domain;
+using Logistics.Modules.Orders.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace LogisticsApp.Modules.Orders;
+namespace Logistics.Modules.Orders.Application;
 
 class OrderDb : DbContext
 {
