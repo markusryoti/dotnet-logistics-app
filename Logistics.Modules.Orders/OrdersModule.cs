@@ -24,8 +24,6 @@ public static class OrdersModule
         services.AddScoped<IDomainEventHandler<OrderCreated>, OrderCreatedHandler>();
 
         services.AddScoped<IInProcessIntegrationEventBus, InProcessIntegrationEventBus>();
-
-        // services.AddScoped<IInventoryFacade>();
     }
 
     public static void MapEndpoints(IEndpointRouteBuilder endpoints)

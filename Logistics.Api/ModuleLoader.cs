@@ -1,5 +1,6 @@
 using Logistics.Modules.Inventory;
 using Logistics.Modules.Orders;
+using Logistics.Modules.Shipping.Application;
 using Logistics.Shared;
 
 public static class ModuleLoader
@@ -8,8 +9,10 @@ public static class ModuleLoader
     {
         logger.LogInformation("Registering modules...");
 
-        InventoryModule.RegisterServices(services, config);
         OrdersModule.RegisterServices(services, config);
+        InventoryModule.RegisterServices(services, config);
+        CatalogModule.RegisterServices(services, config);
+        ShippingModule.RegisterServices(services, config);
 
         // var moduleTypes = AppDomain.CurrentDomain.GetAssemblies()
         //     .SelectMany(a => a.GetTypes())
@@ -30,6 +33,9 @@ public static class ModuleLoader
         app.Logger.LogInformation("Mapping module endpoints...");
 
         OrdersModule.MapEndpoints(app);
+        InventoryModule.MapEndpoints(app);
+        CatalogModule.MapEndpoints(app);
+        ShippingModule.MapEndpoints(app);
 
         // var moduleTypes = AppDomain.CurrentDomain.GetAssemblies()
         //     .SelectMany(a => a.GetTypes())

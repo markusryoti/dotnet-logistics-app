@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../Logistics.Modules.Catalog/Logistics.Modules.Catalog.csproj" />
     <ProjectReference Include="../Logistics.Modules.Orders/Logistics.Modules.Orders.csproj" />
     <ProjectReference Include="../Logistics.Modules.Inventory/Logistics.Modules.Inventory.csproj" />
     <ProjectReference Include="../Logistics.Modules.Shipping/Logistics.Modules.Shipping.csproj" />

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistics.Modules.Shipping"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistics.Contracts", "Logistics.Contracts\Logistics.Contracts.csproj", "{2CFD15D0-94E6-4E63-ACD1-58FB3E0E66C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistics.Modules.Catalog", "Logistics.Modules.Catalog\Logistics.Modules.Catalog.csproj", "{7C0BDE37-EF09-4BE8-98E8-53CA18367156}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,18 @@ Global
 		{2CFD15D0-94E6-4E63-ACD1-58FB3E0E66C7}.Release|x64.Build.0 = Release|Any CPU
 		{2CFD15D0-94E6-4E63-ACD1-58FB3E0E66C7}.Release|x86.ActiveCfg = Release|Any CPU
 		{2CFD15D0-94E6-4E63-ACD1-58FB3E0E66C7}.Release|x86.Build.0 = Release|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Debug|x64.Build.0 = Debug|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Debug|x86.Build.0 = Debug|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Release|x64.ActiveCfg = Release|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Release|x64.Build.0 = Release|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C0BDE37-EF09-4BE8-98E8-53CA18367156}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
