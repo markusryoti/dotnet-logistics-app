@@ -15,6 +15,11 @@ builder.Services.AddSingleton<IInProcessIntegrationEventBus, InProcessIntegratio
 
 var app = builder.Build();
 
+app.ApplyModuleMigrations();
+
+app.MapGet("/", () => "Logistics API is running.");
+app.MapGet("/health", () => Results.Ok("Healthy"));
+
 app.MapModuleEndpoints();
 
 if (app.Environment.IsDevelopment())

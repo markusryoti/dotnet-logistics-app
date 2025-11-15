@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Logistics.Modules.Orders.Infrastructure;
 
 namespace Logistics.Modules.Orders.Application;
 
@@ -12,14 +13,14 @@ public static class Endpoints
 {
     public static RouteGroupBuilder MapOrdersEndpoints(this RouteGroupBuilder group)
     {
-        group.MapGet("/", async (OrderDb db) =>
+        group.MapGet("/", async (OrderDbContext db) =>
         {
             var orders = await db.Orders.ToListAsync();
 
             return Results.Ok(orders);
         });
 
-        group.MapPost("/", async (Order order, OrderDb db, IInventoryFacade inventory, IDomainEventsDispatcher dispatcher, ILoggerFactory loggerFactory) =>
+        group.MapPost("/", async (Order order, OrderDbContext db, IInventoryFacade inventory, IDomainEventsDispatcher dispatcher, ILoggerFactory loggerFactory) =>
         {
             var logger = loggerFactory.CreateLogger("OrdersModule");
 
@@ -34,7 +35,6 @@ public static class Endpoints
 
             return Results.Created($"/api/orders/{order.Id}", order);
         });
-
 
         return group;
     }

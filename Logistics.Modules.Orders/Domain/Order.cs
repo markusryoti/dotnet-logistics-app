@@ -1,4 +1,3 @@
-
 using Logistics.Shared;
 
 namespace Logistics.Modules.Orders.Domain;

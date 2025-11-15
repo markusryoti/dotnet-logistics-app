@@ -3,20 +3,17 @@ using System;
 using Logistics.Modules.Orders.Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Logistics.Modules.Orders.Migrations
+namespace Logistics.Modules.Orders.Infrastructure.Migrations
 {
-    [DbContext(typeof(OrderDb))]
-    [Migration("20251113193154_InitialOrders")]
-    partial class InitialOrders
+    [DbContext(typeof(OrderDbContext))]
+    partial class OrderDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +23,7 @@ namespace Logistics.Modules.Orders.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("LogisticsApp.Modules.Orders.Order", b =>
+            modelBuilder.Entity("Logistics.Modules.Orders.Domain.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,9 +37,9 @@ namespace Logistics.Modules.Orders.Migrations
                     b.ToTable("Orders", "orders");
                 });
 
-            modelBuilder.Entity("LogisticsApp.Modules.Orders.Order", b =>
+            modelBuilder.Entity("Logistics.Modules.Orders.Domain.Order", b =>
                 {
-                    b.OwnsMany("LogisticsApp.Modules.Orders.OrderItem", "Items", b1 =>
+                    b.OwnsMany("Logistics.Modules.Orders.Domain.OrderItem", "Items", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()

@@ -1,11 +1,11 @@
 using Logistics.Modules.Orders.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Logistics.Modules.Orders.Application;
+namespace Logistics.Modules.Orders.Infrastructure;
 
-class OrderDb : DbContext
+class OrderDbContext : DbContext
 {
-    public OrderDb(DbContextOptions<OrderDb> options)
+    public OrderDbContext(DbContextOptions<OrderDbContext> options)
         : base(options) { }
 
     public DbSet<Order> Orders => Set<Order>();

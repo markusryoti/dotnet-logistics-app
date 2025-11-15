@@ -50,4 +50,14 @@ public static class ModuleLoader
         //     module.MapEndpoints(app);
         // }
     }
+
+    public static void ApplyModuleMigrations(this WebApplication app)
+    {
+        app.Logger.LogInformation("Applying module migrations...");
+
+        OrdersModule.ApplyMigrations(app);
+        // InventoryModule.ApplyMigrations(app);
+        // CatalogModule.ApplyMigrations(app);
+        // ShippingModule.ApplyMigrations(app);
+    }
 }
