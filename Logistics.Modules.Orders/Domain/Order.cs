@@ -2,7 +2,7 @@ using Logistics.Shared;
 
 namespace Logistics.Modules.Orders.Domain;
 
-class Order : IHasDomainEvents
+class Order : AggregateRoot
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
 

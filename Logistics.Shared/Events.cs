@@ -14,7 +14,7 @@ public interface IEventHandlerIntegration<TEvent> where TEvent : IIntegrationEve
     Task Handle(TEvent @event, CancellationToken token);
 }
 
-public interface IHasDomainEvents
+public interface AggregateRoot
 {
     List<IDomainEvent>? DomainEvents { get; }
     void AddDomainEvent(IDomainEvent ev);

@@ -33,7 +33,7 @@ public class DomainEventsDispatcher(IInProcessDomainEventBus bus, ILogger<Domain
     {
         log.LogInformation("Dispatching domain events");
 
-        var entities = ctx.ChangeTracker.Entries<IHasDomainEvents>().Where(e => e.Entity.DomainEvents?.Any() == true).ToArray();
+        var entities = ctx.ChangeTracker.Entries<AggregateRoot>().Where(e => e.Entity.DomainEvents?.Any() == true).ToArray();
         var events = entities.SelectMany(e => e.Entity.DomainEvents!).ToList();
         foreach (var e in entities) e.Entity.ClearDomainEvents();
         foreach (var ev in events)
