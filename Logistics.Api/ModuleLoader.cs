@@ -9,23 +9,10 @@ public static class ModuleLoader
     {
         logger.LogInformation("Registering modules...");
 
-        OrdersModule.RegisterServices(services, config);
-        InventoryModule.RegisterServices(services, config);
-        CatalogModule.RegisterServices(services, config);
-        ShippingModule.RegisterServices(services, config);
-
-        // var moduleTypes = AppDomain.CurrentDomain.GetAssemblies()
-        //     .SelectMany(a => a.GetTypes())
-        //     .Where(t => typeof(IModule).IsAssignableFrom(t) && t.IsClass);
-
-        // logger.LogInformation("Found {ModuleCount} modules to register.", moduleTypes.Count());
-
-        // foreach (var type in moduleTypes)
-        // {
-        //     logger.LogInformation("Registering module: {ModuleType}", type.FullName);
-        //     var module = (IModule)Activator.CreateInstance(type)!;
-        //     module.RegisterServices(services, config);
-        // }
+        services.AddOrdersModule(config)
+            .AddInventoryModule(config)
+            .AddCatalogModule(config)
+            .AddShippingModule(config);
     }
 
     public static void MapModuleEndpoints(this WebApplication app)
@@ -36,19 +23,6 @@ public static class ModuleLoader
         InventoryModule.MapEndpoints(app);
         CatalogModule.MapEndpoints(app);
         ShippingModule.MapEndpoints(app);
-
-        // var moduleTypes = AppDomain.CurrentDomain.GetAssemblies()
-        //     .SelectMany(a => a.GetTypes())
-        //     .Where(t => typeof(IModule).IsAssignableFrom(t) && t.IsClass);
-
-        // app.Logger.LogInformation("Found {ModuleCount} modules to map endpoints for.", moduleTypes.Count());
-
-        // foreach (var type in moduleTypes)
-        // {
-        //     app.Logger.LogInformation("Mapping endpoints for module: {ModuleType}", type.FullName);
-        //     var module = (IModule)Activator.CreateInstance(type)!;
-        //     module.MapEndpoints(app);
-        // }
     }
 
     public static void ApplyModuleMigrations(this WebApplication app)
@@ -56,8 +30,8 @@ public static class ModuleLoader
         app.Logger.LogInformation("Applying module migrations...");
 
         OrdersModule.ApplyMigrations(app);
-        // InventoryModule.ApplyMigrations(app);
-        // CatalogModule.ApplyMigrations(app);
-        // ShippingModule.ApplyMigrations(app);
+        InventoryModule.ApplyMigrations(app);
+        CatalogModule.ApplyMigrations(app);
+        ShippingModule.ApplyMigrations(app);
     }
 }

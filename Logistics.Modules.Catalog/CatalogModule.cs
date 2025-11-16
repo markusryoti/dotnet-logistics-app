@@ -8,8 +8,9 @@ namespace Logistics.Modules.Orders;
 
 public static class CatalogModule
 {
-    public static void RegisterServices(IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration config)
     {
+        return services;
     }
 
     public static void MapEndpoints(IEndpointRouteBuilder endpoints)
@@ -17,5 +18,12 @@ public static class CatalogModule
         var group = endpoints.MapGroup("/catalog");
 
         Endpoints.MapCatalogEndpoints(group);
+    }
+
+    public static void ApplyMigrations(IApplicationBuilder app)
+    {
+        // using var scope = app.ApplicationServices.CreateScope();
+        // var db = scope.ServiceProvider.GetRequiredService<CatalogDb>();
+        // db.Database.Migrate();
     }
 }

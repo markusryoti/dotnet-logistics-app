@@ -12,7 +12,7 @@ namespace Logistics.Modules.Orders;
 
 public static class OrdersModule
 {
-    public static void RegisterServices(IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddOrdersModule(this IServiceCollection services, IConfiguration config)
     {
         var connectionString = config.GetConnectionString("Postgres");
 
@@ -25,6 +25,8 @@ public static class OrdersModule
         services.AddScoped<IDomainEventHandler<OrderCreated>, OrderCreatedHandler>();
 
         services.AddScoped<IInProcessIntegrationEventBus, InProcessIntegrationEventBus>();
+
+        return services;
     }
 
     public static void MapEndpoints(IEndpointRouteBuilder endpoints)

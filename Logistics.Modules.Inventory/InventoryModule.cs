@@ -9,7 +9,7 @@ namespace Logistics.Modules.Inventory;
 
 public static class InventoryModule
 {
-    public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddInventoryModule(this IServiceCollection services, IConfiguration config)
     {
         services.AddDbContext<InventoryDb>(opt => opt.UseInMemoryDatabase("Inventory"));
         // services.AddDbContext<InventoryDb>();
@@ -23,6 +23,13 @@ public static class InventoryModule
         var group = endpoints.MapGroup("/inventory");
 
         Endpoints.MapInventoryEndpoints(group);
+    }
+
+    public static void ApplyMigrations(IApplicationBuilder app)
+    {
+        // using var scope = app.ApplicationServices.CreateScope();
+        // var db = scope.ServiceProvider.GetRequiredService<InventoryDb>();
+        // db.Database.Migrate();
     }
 }
 

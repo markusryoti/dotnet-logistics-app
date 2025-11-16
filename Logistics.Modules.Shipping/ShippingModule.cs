@@ -9,7 +9,7 @@ namespace Logistics.Modules.Shipping.Application;
 
 public static class ShippingModule
 {
-    public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddShippingModule(this IServiceCollection services, IConfiguration config)
     {
         services.AddDbContext<ShippingDb>();
         services.AddScoped<IEventHandlerIntegration<OrderPlaced>, OrderPlacedIntegrationHandler>();
@@ -22,6 +22,13 @@ public static class ShippingModule
         var group = endpoints.MapGroup("/shipping");
 
         Endpoints.MapShippingEndpoints(group);
+    }
+
+    public static void ApplyMigrations(IApplicationBuilder app)
+    {
+        // using var scope = app.ApplicationServices.CreateScope();
+        // var db = scope.ServiceProvider.GetRequiredService<ShippingDb>();
+        // db.Database.Migrate();
     }
 }
 
