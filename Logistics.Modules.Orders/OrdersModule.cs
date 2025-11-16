@@ -10,9 +10,9 @@ using Logistics.Modules.Orders.Infrastructure;
 
 namespace Logistics.Modules.Orders;
 
-public class OrdersModule : IModule
+public static class OrdersModule
 {
-    public void RegisterServices(IServiceCollection services, IConfiguration config)
+    public static void RegisterServices(IServiceCollection services, IConfiguration config)
     {
         var connectionString = config.GetConnectionString("Postgres");
 
@@ -27,14 +27,14 @@ public class OrdersModule : IModule
         services.AddScoped<IInProcessIntegrationEventBus, InProcessIntegrationEventBus>();
     }
 
-    public void MapEndpoints(IEndpointRouteBuilder endpoints)
+    public static void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
         var group = endpoints.MapGroup("/orders");
 
         Endpoints.MapOrdersEndpoints(group);
     }
 
-    public void ApplyMigrations(IApplicationBuilder app)
+    public static void ApplyMigrations(IApplicationBuilder app)
     {
         using var scope = app.ApplicationServices.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<OrderDbContext>();
