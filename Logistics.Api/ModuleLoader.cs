@@ -1,7 +1,7 @@
+using Logistics.Modules.Catalog;
 using Logistics.Modules.Inventory;
 using Logistics.Modules.Orders;
 using Logistics.Modules.Shipping.Application;
-using Logistics.Shared;
 
 public static class ModuleLoader
 {
